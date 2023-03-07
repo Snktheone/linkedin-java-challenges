@@ -1,19 +1,17 @@
-<configuration>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
 
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
-            </Pattern>
-        </layout>
+<configuration>
+    <import class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
+    <import class="ch.qos.logback.core.ConsoleAppender"/>
+
+    <appender name="STDOUT" class="ConsoleAppender">
+        <encoder class="PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+        </encoder>
     </appender>
 
-    <logger name="linkedin-java-challenge" level="debug" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-
     <root level="debug">
-        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
-
 </configuration>
